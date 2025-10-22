@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/test', function () {
-    return view('test');
+use App\Http\Controllers\TestController;
+Route::get('/',function(){
+    return view('welcome');
 });
+
+Route::get('/test',[TestController::class,'test'])->name ('test.view');
+
