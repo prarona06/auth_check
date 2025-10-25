@@ -67,7 +67,7 @@
       </form>
 
       <p class="text-center mt-3 mb-0">
-        Already have an account? <a href="#">Login</a>
+        Already have an account? <a href="{{ route('login.view')}}">Login Here</a>
       </p>
     </div>
   </div>
