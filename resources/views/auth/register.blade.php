@@ -37,29 +37,32 @@
       User Registration
     </div>
     <div class="card-body p-4">
-      <form>
+      <!-- Laravel form POST -->
+      <form action="{{ route('register.submit') }}" method="POST">
+        @csrf  <!-- CSRF token required in Laravel -->
+
         <!-- Name -->
         <div class="mb-3">
           <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
         </div>
 
         <!-- Email -->
         <div class="mb-3">
           <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
         </div>
 
         <!-- Password -->
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
         </div>
 
         <!-- Confirm Password -->
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password" required>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
         </div>
 
         <!-- Submit -->

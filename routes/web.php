@@ -1,11 +1,13 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+// Registration page
+Route::get('/', [AuthController::class, 'registerView'])->name('register.view');
+Route::post('/register', [AuthController::class, 'registerSubmit'])->name('register.submit');
 
-Route::get('/',[AuthController::class,'register'])->name('register.view');
-Route::get('/login',[AuthController::class,'login'])->name('login.view');
-
+// Login page
+Route::get('/login', [AuthController::class, 'loginView'])->name('login.view');
+Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
 
 

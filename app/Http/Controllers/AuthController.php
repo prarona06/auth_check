@@ -14,4 +14,15 @@ class AuthController extends Controller
     {
         return view ('auth.login');
     }
+    /*public function register(Request $request)
+    {
+        dd($request->all());
+    }*/
+    public function registerSubmit(Request $request)
+    {
+        $request->validate([
+            'name' =>'required',
+        ]);
+    }
+  
 }
