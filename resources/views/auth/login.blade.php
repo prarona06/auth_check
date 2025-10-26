@@ -34,7 +34,7 @@
 <body>
   <div class="container vh-100 d-flex justify-content-center align-items-center">
     <div class="card p-4 col-md-6 col-lg-4">
-      <h3 class="card-title text-center mb-4">Register</h3>
+      <h3 class="card-title text-center mb-4">Login</h3>
       <form>
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
@@ -52,9 +52,9 @@
           <label for="confirmPassword" class="form-label">Confirm Password</label>
           <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Register</button>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
       </form>
-      <p class="mt-3 text-center">Already have an account? <a href="{{route('register.view'}}">Login Here</a></p>
+      <p class="mt-3 text-center">Already have an account? <a href="{{route('register.view')}}">Register Here</a></p>
     </div>
   </div>
 

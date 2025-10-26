@@ -39,12 +39,13 @@
     <div class="card-body p-4">
       <!-- Laravel form POST -->
       <form action="{{ route('register.submit') }}" method="POST">
-        @csrf  <!-- CSRF token required in Laravel -->
+         @csrf
 
         <!-- Name -->
         <div class="mb-3">
           <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+          <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Enter your full name" required>
+          @error('name') <p style="color:red; font-size:small">{{ $message }}</p> @enderror
         </div>
 
         <!-- Email -->
@@ -62,7 +63,7 @@
         <!-- Confirm Password -->
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+          <input type="password" class="form-control" id="confirmPassword" name="password_confirmation" placeholder="Re-enter password" required>
         </div>
 
         <!-- Submit -->
@@ -70,7 +71,7 @@
       </form>
 
       <p class="text-center mt-3 mb-0">
-        Already have an account? <a href="{{ route('login.view')}}">Login Here</a>
+        Already have an account? <a href="{{ route('register.view') }}">Login Here</a>
       </p>
     </div>
   </div>
