@@ -44,26 +44,28 @@
         <!-- Name -->
         <div class="mb-3">
           <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Enter your full name" required>
+          <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Enter your full name" >
           @error('name') <p style="color:red; font-size:small">{{ $message }}</p> @enderror
         </div>
 
         <!-- Email -->
         <div class="mb-3">
           <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+          <input type="email" class="form-control  @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter your email" >
+         @error('email') <p style="color:red; font-size:small">{{ $message }}</p> @enderror
         </div>
 
         <!-- Password -->
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+          <input type="password" class="form-control  @error('password') is-invalid @enderror" id="password" name="password" placeholder="Enter password" >
+            @error('password') <p style="color:red; font-size:small">{{ $message }}</p> @enderror
         </div>
 
         <!-- Confirm Password -->
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword" name="password_confirmation" placeholder="Re-enter password" required>
+          <input type="password" class="form-control" id="confirmPassword" name="password_confirmation" placeholder="Re-enter password" >
         </div>
 
         <!-- Submit -->
@@ -71,7 +73,8 @@
       </form>
 
       <p class="text-center mt-3 mb-0">
-        Already have an account? <a href="{{ route('register.view') }}">Login Here</a>
+       Already have an account? <a href="{{ route('login.view') }}">Login Here</a>
+
       </p>
     </div>
   </div>

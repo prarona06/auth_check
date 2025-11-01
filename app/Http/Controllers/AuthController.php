@@ -71,6 +71,6 @@ class AuthController extends Controller
     // 🔹 Home page
     public function index()
     {
-        return view('home');
+        return view('auth.home');
     }
 }
