@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -21,13 +22,11 @@ class AuthController extends Controller
     }
 
     // 🔹 Registration form submit
-    public function registerSubmit(Request $request)
+    public function registerSubmit(UserRegisterRequest $request)
     {
         // Validation
-        $request->validate([
-            'name' => 'required|string|min:3|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|max:100|confirmed',
+        $request->validated([
+
         ]);
 
         // Insert user data
