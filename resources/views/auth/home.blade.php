@@ -49,11 +49,16 @@
           <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
           @guest
           <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('login.view') }}">Login</a></li>
-           <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('logout') }}">Logout</a></li>\
-           @endguest
-           @auth
-            <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('register.view') }}">SignUp</a></li>
-            @endauth
+           <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('register.view') }}">SignUp</a></li>
+         @endguest
+  @auth
+
+<form action ="{{ route ('logout') }}" method ="post">
+    @csrf
+            <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('logout') }}">Logout</a></li>
+            </form>
+           @endauth
+
         </ul>
       </div>
     </div>

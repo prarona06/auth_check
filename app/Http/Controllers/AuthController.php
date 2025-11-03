@@ -6,6 +6,7 @@ use App\Http\Requests\UserRegisterRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,6 +29,7 @@ class AuthController extends Controller
     {
         // Validation
         $request->validated();
+
 
         // Insert user data
         DB::table('users')->insert([
@@ -60,6 +62,7 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'email' => $user->email,
             ]);
+            Auth::loginUsingId($user->id);
 
             return redirect()->route('home');
         } else {
@@ -75,10 +78,26 @@ class AuthController extends Controller
 
     //logout
 
-    public function logout(Request $request)
+   /* public function logout(Request $request)
     {
         Auth::logout();
 $request->session()->forget('user');
 return redirect()->route('login.view');
-    }
+    }*/
+
+    public function logout(Request $request)
+{
+    // Auth সিস্টেম থেকে ইউজারকে লগআউট করা
+    Auth::logout();
+
+    // সেশন পুরোপুরি ইনভ্যালিড করা
+    $request->session()->invalidate();
+
+    // নতুন CSRF টোকেন তৈরি করা
+    $request->session()->regenerateToken();
+
+    // লগইন পেজে রিডাইরেক্ট করা
+    return redirect()->route('login.view')->with('success', 'You have been logged out successfully.');
+}
+
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+
+
 Route::middleware('guest')->group(function(){
 // Registration page
 Route::get('/', [AuthController::class, 'registerView'])->name('register.view');
@@ -12,6 +14,6 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('login.view');
 Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
 
 // Home page
-Route::get('/home', [AuthController::class, 'index'])->name('home');
+Route::get('/home', [AuthController::class, 'index'])->name('home')->middleware('user_auth');
 //logout page
-Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout')->middleware('auth');
