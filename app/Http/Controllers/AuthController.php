@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegisterRequest;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,9 +27,7 @@ class AuthController extends Controller
     public function registerSubmit(UserRegisterRequest $request)
     {
         // Validation
-        $request->validated([
-
-        ]);
+        $request->validated();
 
         // Insert user data
         DB::table('users')->insert([
@@ -71,5 +71,14 @@ class AuthController extends Controller
     public function index()
     {
         return view('auth.home');
+    }
+
+    //logout
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+$request->session()->forget('user');
+return redirect()->route('login.view');
     }
 }

@@ -47,7 +47,13 @@
           <li class="nav-item"><a class="nav-link" href="#">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-          <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="/login">Login</a></li>
+          @guest
+          <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('login.view') }}">Login</a></li>
+           <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('logout') }}">Logout</a></li>\
+           @endguest
+           @auth
+            <li class="nav-item"><a class="btn btn-light text-primary ms-2" href="{{ route ('register.view') }}">SignUp</a></li>
+            @endauth
         </ul>
       </div>
     </div>
@@ -94,7 +100,7 @@
         </div>
       </div>
     </div>
-     
+
   </section>
 
   <!--Footer -->
