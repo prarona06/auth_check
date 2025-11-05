@@ -78,6 +78,14 @@ $user->save();
     // 🔹 Home page
     public function index()
     {
+      $user =User::all(); //=>users tabler er moddha joto data acha sob niye aso all function er maddhome.
+     // $user =User::get();=>same tule niye asa
+     //$user =User::first();=>prothom ta asbe
+     //$user =User::find(3);=>jekono akta ante chaile
+     //$user =User::where('id',3)->orWhere('id',4)->get();=>jodi sudhu 3 thaka 3 ke anbe jodi sudhu 4 thaka 4 ke anbe
+     //$user =User::where('id',3)->Where('role','admin')->get();=>id 3 o hote hbe admin o hote hbe
+     //$user =User::where('id',3)->where('id',4); //id 3 and id 4 hote hbe
+
         return view('auth.home');
     }
 
