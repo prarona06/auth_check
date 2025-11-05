@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegisterRequest;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,14 +29,19 @@ class AuthController extends Controller
     {
         // Validation
         $request->validated();
+$user =new User();
+$user->name =$request->name;
+$user->email =$request->email;
+$user->password =Hash::make($request->password);
+$user->save();
 
 
         // Insert user data
-        DB::table('users')->insert([
+       /* DB::table('users')->insert([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+        ]);*/
 
         // Redirect to login page
         return redirect()->route('login.view')->with('success', 'Registration successful! Please login.');
